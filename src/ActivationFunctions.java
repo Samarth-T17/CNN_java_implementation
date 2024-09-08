@@ -55,4 +55,18 @@ public class ActivationFunctions {
         }
         return out;
     }
+
+    public static List<List<List<Value>>> relu3D(List<List<List<Value>>> e) {
+        List<List<List<Value>>> out = new ArrayList<>(e.size());
+        for(List<List<Value>> x : e){
+            List<List<Value>> channel = new ArrayList<>(x.size());
+            for(List<Value> y : x){
+                List<Value> row = relu(y);
+                channel.add(row);
+            }
+            out.add(channel);
+        }
+        return out;
+    }
+
 }

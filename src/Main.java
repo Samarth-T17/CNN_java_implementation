@@ -88,4 +88,5 @@ class MLP extends NeuralNetwork {
         MLP model = new MLP(10);
         model.train(100);
     }
+
 }

@@ -90,6 +90,15 @@ public class Value {
         return out;
     }
 
+    public static Value noOpp(Value e) {
+        List<Value> children = new ArrayList<>();
+        children.add(e);
+        double x = e.data;
+        Value out = new Value(e.data, children);
+        out.backwardOp = () -> e.grad += out.grad;
+        return out;
+    }
+
     public static List<Value> backPropagate(Value finalNode) {
         Set<Value> visited = new HashSet<>();
         List<Value> order = new ArrayList<>();
