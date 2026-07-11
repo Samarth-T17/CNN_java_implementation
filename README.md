@@ -1,6 +1,6 @@
 # Neural Networks from Scratch in Java
 
-A scalar autograd engine with MLP and CNN implementations built on top of it. No external dependencies — the only libraries used are `java.util` and `javax.imageio`.
+A scalar autograd engine with MLP and CNN implementations built on top of it. The only libraries used are `java.util` and `javax.imageio`.
 
 ## How it works
 
@@ -58,7 +58,7 @@ Kernels and dense weights use He initialization. Training uses SGD with per-epoc
 
 ### Dataset
 
-The [TensorFlow flower_photos dataset](https://www.tensorflow.org/datasets/catalog/tf_flowers) (daisy, dandelion, roses, sunflowers, tulips). It is gitignored; download and trim it with:
+The [TensorFlow flower_photos dataset](https://www.tensorflow.org/datasets/catalog/tf_flowers) (daisy, dandelion, roses, sunflowers, tulips).
 
 ```bash
 curl -sSL -o flower_photos.tgz https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz
@@ -83,9 +83,7 @@ With 200 images per class (1000 total), 18 epochs, lr 0.05, batch size 5:
 |---|---|
 | peak eval accuracy | 55.7% (epoch 4) |
 | final test accuracy | 43.7% |
-| chance baseline | 20% |
 
-The model overfits after ~epoch 5 (final train log-likelihood −0.05); early stopping at the eval peak would improve test accuracy. Training takes a few hours because the scalar autograd allocates one object per operation — roughly 400k graph nodes per image forward pass.
 
 ## Layer sanity checks
 
