@@ -1,3 +1,7 @@
+package cnn;
+
+import core.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +9,6 @@ public class PaddingUtil {
     static public List<List<List<Value>>> addPadding(List<List<List<Value>>> input, int padding) {
         int channels = input.size();
         int size = input.getFirst().size();
-        System.out.println("Padding : " + padding);
         List<List<List<Value>>> paddedOutput = new ArrayList<>(channels);
         for (int c = 0; c < channels; c++) {
             List<List<Value>> paddedChannel = new ArrayList<>(size + 2 * padding);

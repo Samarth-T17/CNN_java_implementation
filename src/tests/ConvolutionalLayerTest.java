@@ -1,3 +1,8 @@
+package tests;
+
+import cnn.ConvolutionalLayer;
+import core.Value;
+
 import java.util.*;
 
 public class ConvolutionalLayerTest {

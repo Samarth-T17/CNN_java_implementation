@@ -1,3 +1,7 @@
+package cnn;
+
+import core.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +9,7 @@ public class MaxpoolLayer {
     public int filterSize;
     public int padding;
     public int stride;
-    MaxpoolLayer(int filterSize, int padding, int stride) {
+    public MaxpoolLayer(int filterSize, int padding, int stride) {
         this.filterSize = filterSize;
         this.padding = padding;
         this.stride = stride;

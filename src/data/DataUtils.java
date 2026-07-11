@@ -1,3 +1,7 @@
+package data;
+
+import core.Value;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

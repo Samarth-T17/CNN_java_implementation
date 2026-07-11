@@ -1,3 +1,7 @@
+package data;
+
+import core.Value;
+
 import java.util.List;
 
 public class ImageTuple {

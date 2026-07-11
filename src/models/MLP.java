@@ -1,8 +1,13 @@
+package models;
+
+import core.*;
+import data.DataUtils;
+
 import java.util.List;
 import java.util.function.Function;
 import java.util.*;
 
-class MLP extends NeuralNetwork {
+public class MLP extends NeuralNetwork {
     public MLP(int batchSize) {
         this.batchSize = batchSize;
         this.denseNN = new ArrayList<>();

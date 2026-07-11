@@ -1,3 +1,5 @@
+package core;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,11 +13,11 @@ public class Neuron {
     public Neuron(int inputSize) {
         w = new ArrayList<>();
         Random random = new Random();
+        double stddev = Math.sqrt(2.0 / inputSize);
         for (int i = 0; i < inputSize; ++i) {
-            double e = -1.0 + 2.0 * random.nextDouble(); // generates a random double between -1.0 and 1.0
-            w.add(new Value(e));
+            w.add(new Value(random.nextGaussian() * stddev));
         }
-        b = new Value(-1.0 + 2.0 * random.nextDouble());
+        b = new Value(0);
     }
 
     public Value output(List<Value> x) {

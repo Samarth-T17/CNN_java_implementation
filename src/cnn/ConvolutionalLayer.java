@@ -1,3 +1,7 @@
+package cnn;
+
+import core.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,12 +14,10 @@ public class ConvolutionalLayer {
     public int padding;
     public int stride;
     private static final Random random = new Random();
-    ConvolutionalLayer(int inputSize, int numberOfChannels, int numberOfKernels, int kernelSize, int padding, int stride) {
+    public ConvolutionalLayer(int inputSize, int numberOfChannels, int numberOfKernels, int kernelSize, int padding, int stride) {
         this.padding = padding;
         this.stride = stride;
-        int fanIn = (inputSize + 2 * padding) * (inputSize + 2 * padding) * numberOfChannels;
-        int fanOut = numberOfKernels * (inputSize + 2 * padding) * (inputSize + 2 * padding);
-        double stddev = Math.sqrt(2.0 / (fanIn + fanOut));
+        double stddev = Math.sqrt(2.0 / (kernelSize * kernelSize * numberOfChannels));
 
         kernels = new ArrayList<>(numberOfKernels);
 
@@ -26,8 +28,7 @@ public class ConvolutionalLayer {
                 for (int h = 0; h < kernelSize; h++) {
                     List<Value> row = new ArrayList<>(kernelSize);
                     for (int w = 0; w < kernelSize; w++) {
-                        row.add(new Value(2));
-                        //random.nextGaussian() * stddev
+                        row.add(new Value(random.nextGaussian() * stddev));
                     }
                     channel.add(row);
                 }
@@ -41,6 +42,19 @@ public class ConvolutionalLayer {
         }
     }
 
+
+    public List<Value> getParams() {
+        List<Value> out = new ArrayList<>();
+        for (List<List<List<Value>>> kernel : kernels) {
+            for (List<List<Value>> channel : kernel) {
+                for (List<Value> row : channel) {
+                    out.addAll(row);
+                }
+            }
+        }
+        out.addAll(bias);
+        return out;
+    }
 
     public List<List<List<Value>>> output(List<List<List<Value>>> input) {
         int outDim = getOutDim(input.getFirst().size());

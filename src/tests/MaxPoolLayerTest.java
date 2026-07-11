@@ -1,3 +1,8 @@
+package tests;
+
+import cnn.MaxpoolLayer;
+import core.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 
