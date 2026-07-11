@@ -54,6 +54,6 @@ public abstract class NeuralNetwork {
         Value.backPropagate(lastNode);
     }
 
-    // Optional: Implement a method for testing backpropagation if needed.
+
 }
 
